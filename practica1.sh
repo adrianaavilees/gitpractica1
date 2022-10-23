@@ -78,8 +78,6 @@ awk -F, -v calcul2=$max_tmdb 'BEGIN{OFS=","}{$17=($15*($14/calcul2))}{print}' sh
 millor_peli=$(awk 'BEGIN { max=0 } $12 > max { max=$12; id=$1; title=$2; production_countries=$9 } END { print id, title, production_countries, max }' FS="," movies4.cvs)
 echo "${millor_peli}"
 
-IFS="," read -a millor_peli_data <<< $paso6 #Per si després hem d'utilitzar les dades les hem posat en un array
-
 #Quina sèrie té la millor puntuació IMDB?
 millor_serie=$(awk 'BEGIN { max=0 } $12 > max { max=$12; id=$1; title=$2; production_countries=$9 } END { print id, title, production_countries, max }' FS="," shows4.cvs)
 echo "${millor_serie}"
@@ -114,7 +112,7 @@ echo "${popularity_movie}"
 popularity_shows=$(awk 'BEGIN { max=0 } $14 > max { max=$14; id=$1; title=$2; production_countries=$9 } END { print id, title, production_countries, max }' FS="," shows4.cvs)
 echo "${popularity_shows}"
 
-# tmdb_reliability?
+#tmdb_reliability?
 reliability_movie=$(awk 'BEGIN { max=0 } $17 > max { max=$17; id=$1; title=$2; production_countries=$9 } END { print id, title, production_countries, max }' FS="," movies4.cvs)
 echo "${reliability_movie}"
 
